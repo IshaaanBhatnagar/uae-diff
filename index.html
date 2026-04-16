@@ -27,7 +27,10 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
 .tab-fear.active{background:#991b1b;box-shadow:0 0 0 2px rgba(153,27,27,.2),0 0 12px rgba(153,27,27,.3)}
 .tab-mandate.active{background:#92400e;box-shadow:0 0 0 2px rgba(146,64,14,.2),0 0 12px rgba(146,64,14,.3)}
 .tab-roi.active{background:#166534;box-shadow:0 0 0 2px rgba(22,101,52,.2),0 0 12px rgba(22,101,52,.3)}
+.tab-overview.active{background:#2563eb;box-shadow:0 0 0 2px rgba(37,99,235,.2),0 0 12px rgba(37,99,235,.3)}
 .tab-matrix.active{background:#0f172a;box-shadow:0 0 0 2px rgba(15,23,42,.2),0 0 12px rgba(15,23,42,.3)}
+@keyframes pulseOverview{0%,100%{box-shadow:0 0 0 2px rgba(37,99,235,.15),0 0 8px rgba(37,99,235,.2)}50%{box-shadow:0 0 0 3px rgba(37,99,235,.22),0 0 14px rgba(37,99,235,.3)}}
+.tab-overview.active{animation:pulseOverview 2.5s ease-in-out infinite}
 @keyframes pulseFear{0%,100%{box-shadow:0 0 0 2px rgba(153,27,27,.15),0 0 8px rgba(153,27,27,.2)}50%{box-shadow:0 0 0 3px rgba(153,27,27,.22),0 0 14px rgba(153,27,27,.3)}}
 @keyframes pulseMandate{0%,100%{box-shadow:0 0 0 2px rgba(146,64,14,.15),0 0 8px rgba(146,64,14,.2)}50%{box-shadow:0 0 0 3px rgba(146,64,14,.22),0 0 14px rgba(146,64,14,.3)}}
 @keyframes pulseRoi{0%,100%{box-shadow:0 0 0 2px rgba(22,101,52,.15),0 0 8px rgba(22,101,52,.2)}50%{box-shadow:0 0 0 3px rgba(22,101,52,.22),0 0 14px rgba(22,101,52,.3)}}
@@ -120,7 +123,8 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
       </div>
     </a>
     <div class="ml-auto flex items-center gap-1 overflow-x-auto">
-      <button data-tab="fear" class="tab-btn tab-fear active">Fear</button>
+      <button data-tab="overview" class="tab-btn tab-overview active">Overview</button>
+      <button data-tab="fear" class="tab-btn tab-fear">Fear</button>
       <button data-tab="mandate" class="tab-btn tab-mandate">Mandate</button>
       <button data-tab="roi" class="tab-btn tab-roi">ROI</button>
       <button data-tab="matrix" class="tab-btn tab-matrix">Matrix</button>
@@ -130,8 +134,8 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
 
 <main class="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12">
 
-<!-- ==================== HERO ==================== -->
-<div class="mb-10">
+<!-- ==================== OVERVIEW ==================== -->
+<section id="overview" class="sec active">
   <div class="card p-6 md:p-8" style="border-color:#bfdbfe;background:linear-gradient(135deg,#f8fafc,#eff6ff)">
     <div class="flex flex-col md:flex-row md:items-start gap-6">
       <div class="flex-1">
@@ -173,10 +177,10 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ==================== FEAR ==================== -->
-<section id="fear" class="sec active">
+<section id="fear" class="sec">
   <div class="section-hero hero-fear">
     <span class="hash-chip">#fear</span>
     <h1 class="font-heading text-3xl md:text-4xl font-bold mt-3 text-[#7f1d1d]">What keeps your CFO up at night?</h1>
@@ -466,16 +470,11 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
     <div class="question">"How much are you spending on middleware and reconciliation today?"</div>
     <div class="clear-answer">
       <h4>Clear's answer — GLStream eliminates middleware</h4>
-      <div class="grid md:grid-cols-3 gap-3 mt-2 text-[13.5px]">
+      <div class="grid md:grid-cols-2 gap-3 mt-2 text-[13.5px]">
         <div class="bg-white rounded-lg border border-green-100 p-3 text-center">
-          <div class="font-heading text-xl font-bold text-green-800">iPaaS licence</div>
-          <div class="text-slate-600 mt-1">Eliminated. GLStream connects directly.</div>
-          <div class="font-heading text-lg font-bold text-green-700 mt-2">~$30K-100K/yr saved</div>
-        </div>
-        <div class="bg-white rounded-lg border border-green-100 p-3 text-center">
-          <div class="font-heading text-xl font-bold text-green-800">Middleware team</div>
-          <div class="text-slate-600 mt-1">Eliminated. No custom bridge to maintain.</div>
-          <div class="font-heading text-lg font-bold text-green-700 mt-2">~1-2 FTE redeployed</div>
+          <div class="font-heading text-xl font-bold text-green-800">Middleware licence & team</div>
+          <div class="text-slate-600 mt-1">Eliminated. GLStream connects directly to ERP — no MuleSoft/Boomi, no custom bridge to maintain.</div>
+          <div class="font-heading text-lg font-bold text-green-700 mt-2">~$30K-100K/yr + 1-2 FTE saved</div>
         </div>
         <div class="bg-white rounded-lg border border-green-100 p-3 text-center">
           <div class="font-heading text-xl font-bold text-green-800">Month-end recon</div>
@@ -613,7 +612,7 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
 </footer>
 
 <script>
-const TABS = ["fear","mandate","roi","matrix"];
+const TABS = ["overview","fear","mandate","roi","matrix"];
 
 // ===== Matrix data =====
 const MATRIX_ROWS = [
@@ -861,7 +860,7 @@ document.querySelectorAll('.card').forEach(card => {
 
 // ===== Tab routing =====
 function activate(tab){
-  if(!TABS.includes(tab)) tab="fear";
+  if(!TABS.includes(tab)) tab="overview";
   TABS.forEach(t=>{
     const sec=document.getElementById(t);
     const btn=document.querySelector(`.tab-btn[data-tab="${t}"]`);
@@ -875,7 +874,7 @@ document.querySelectorAll(".tab-btn").forEach(b=>{
   b.addEventListener("click",()=>activate(b.dataset.tab));
 });
 window.addEventListener("hashchange",()=>activate(location.hash.replace("#","")));
-activate((location.hash||"#fear").replace("#",""));
+activate((location.hash||"#overview").replace("#",""));
 </script>
 
 </div><!-- /app-content -->
