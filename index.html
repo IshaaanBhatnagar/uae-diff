@@ -29,8 +29,11 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
 .tab-roi.active{background:#166534;box-shadow:0 0 0 2px rgba(22,101,52,.2),0 0 12px rgba(22,101,52,.3)}
 .tab-overview.active{background:#2563eb;box-shadow:0 0 0 2px rgba(37,99,235,.2),0 0 12px rgba(37,99,235,.3)}
 .tab-matrix.active{background:#0f172a;box-shadow:0 0 0 2px rgba(15,23,42,.2),0 0 12px rgba(15,23,42,.3)}
+.tab-lose.active{background:#6b21a8;box-shadow:0 0 0 2px rgba(107,33,168,.2),0 0 12px rgba(107,33,168,.3)}
 @keyframes pulseOverview{0%,100%{box-shadow:0 0 0 2px rgba(37,99,235,.15),0 0 8px rgba(37,99,235,.2)}50%{box-shadow:0 0 0 3px rgba(37,99,235,.22),0 0 14px rgba(37,99,235,.3)}}
 .tab-overview.active{animation:pulseOverview 2.5s ease-in-out infinite}
+@keyframes pulseLose{0%,100%{box-shadow:0 0 0 2px rgba(107,33,168,.15),0 0 8px rgba(107,33,168,.2)}50%{box-shadow:0 0 0 3px rgba(107,33,168,.22),0 0 14px rgba(107,33,168,.3)}}
+.tab-lose.active{animation:pulseLose 2.5s ease-in-out infinite}
 @keyframes pulseFear{0%,100%{box-shadow:0 0 0 2px rgba(153,27,27,.15),0 0 8px rgba(153,27,27,.2)}50%{box-shadow:0 0 0 3px rgba(153,27,27,.22),0 0 14px rgba(153,27,27,.3)}}
 @keyframes pulseMandate{0%,100%{box-shadow:0 0 0 2px rgba(146,64,14,.15),0 0 8px rgba(146,64,14,.2)}50%{box-shadow:0 0 0 3px rgba(146,64,14,.22),0 0 14px rgba(146,64,14,.3)}}
 @keyframes pulseRoi{0%,100%{box-shadow:0 0 0 2px rgba(22,101,52,.15),0 0 8px rgba(22,101,52,.2)}50%{box-shadow:0 0 0 3px rgba(22,101,52,.22),0 0 14px rgba(22,101,52,.3)}}
@@ -128,6 +131,7 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
       <button data-tab="mandate" class="tab-btn tab-mandate">Mandate</button>
       <button data-tab="roi" class="tab-btn tab-roi">ROI</button>
       <button data-tab="matrix" class="tab-btn tab-matrix">Matrix</button>
+      <button data-tab="lose" class="tab-btn tab-lose">When We Lose <span style="font-size:9px;padding:1px 5px;border-radius:999px;background:rgba(255,255,255,.25);margin-left:4px;vertical-align:middle">WIP</span></button>
     </div>
   </div>
 </nav>
@@ -248,7 +252,12 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
     <div class="secondary-strip">
       <strong>Secondary competitors:</strong> SAP BTP has published In-Metro DR (RPO 5min / RTO 2hr) — comparable but two-tier, not three. Pagero, EDICOM, Comarch: no published RTO/RPO.
     </div>
-    <div class="talk-track">"Ask for their DR document with RTO/RPO. We'll hand you ours today."</div>
+    <div class="talk-track">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#64748b;font-style:normal;margin-bottom:6px">Per persona</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CFO:</strong> "What's your vendor's uptime SLA? Ours is documented — RTO under 1 hour."</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CIO:</strong> "Ask for their DR architecture document with RTO/RPO. We'll hand you ours today."</div>
+      <div><strong style="color:#2563eb;font-style:normal">Tax Head:</strong> "If the ASP goes down on filing day, who's liable? We have 3-tier failover."</div>
+    </div>
   </div>
 
   <!-- Card: Security -->
@@ -297,7 +306,12 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
     <div class="secondary-strip">
       <strong>Secondary:</strong> SAP BTP carries SAP's enterprise security stack (SOC 2, ISO 27001, CSA STAR). Pagero (Thomson Reuters) also has strong compliance posture. These two are peers on security.
     </div>
-    <div class="talk-track">"Hand this to your CISO. SOC 2, ISO 27001, AES-256, UAE residency. Ask the other vendor for theirs."</div>
+    <div class="talk-track">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#64748b;font-style:normal;margin-bottom:6px">Per persona</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CFO:</strong> "Your data stays in UAE. SOC 2 audited. No compliance risk on the ASP layer."</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CIO:</strong> "Hand this to your CISO — SOC 2, ISO 27001, AES-256, UAE residency. Ask the other vendor for theirs."</div>
+      <div><strong style="color:#2563eb;font-style:normal">Tax Head:</strong> "PDPL-aligned, audit-trail on every invoice, 7-year archival. Your auditor will love it."</div>
+    </div>
   </div>
 
   <!-- Card: Scale -->
@@ -334,7 +348,12 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
     <div class="secondary-strip">
       <strong>Secondary:</strong> SAP processes massive volumes natively (within SAP ecosystem). Pagero handles billions via ONESOURCE Pagero Network. Both are credible on scale.
     </div>
-    <div class="talk-track">"We transmit a billion invoices a year. Ask your vendor for their number."</div>
+    <div class="talk-track">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#64748b;font-style:normal;margin-bottom:6px">Per persona</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CFO:</strong> "We run MAF and Landmark in KSA. Your invoice volume isn't a scale risk for us."</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CIO:</strong> "A billion invoices a year. Ask your vendor for their number — and their architecture."</div>
+      <div><strong style="color:#2563eb;font-style:normal">Tax Head:</strong> "B2B, B2C, B2G — all on one platform. No volume cap, no separate SKU per transaction type."</div>
+    </div>
   </div>
 
   <!-- Card: Validation Engine -->
@@ -364,7 +383,12 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
     <div class="secondary-strip">
       <strong>Secondary:</strong> No competitor in the pre-approved ASP list publicly documents an agentic validation-failure engine. This is a category-creating capability.
     </div>
-    <div class="talk-track">"Validation failures at 11pm? Our agent fixes them while your team sleeps."</div>
+    <div class="talk-track">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#64748b;font-style:normal;margin-bottom:6px">Per persona</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CFO:</strong> "Validation failures cause late filings. Our agent auto-resolves — no overnight scramble."</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CIO:</strong> "AI agent with workflow safeguards. No custom error-handling code on your side."</div>
+      <div><strong style="color:#2563eb;font-style:normal">Tax Head:</strong> "FTA error codes in plain English, auto-corrected with approval workflow. You review, not debug."</div>
+    </div>
   </div>
 </section>
 
@@ -404,7 +428,12 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
     <div class="secondary-strip">
       <strong>Secondary:</strong> Pagero has a unified API (confirmed, documented developer portal). SAP DRC is unified inside S/4HANA ecosystem only. EDICOM and Comarch require per-country customisation.
     </div>
-    <div class="talk-track">"How many integrations did they quote for GCC? We quoted one."</div>
+    <div class="talk-track">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#64748b;font-style:normal;margin-bottom:6px">Per persona</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CFO:</strong> "One integration cost for the whole GCC, not five separate projects."</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CIO:</strong> "Single API, single doc. Country is a parameter — no new endpoints per market."</div>
+      <div><strong style="color:#2563eb;font-style:normal">Tax Head:</strong> "UAE, Qatar, Oman — same compliance engine, same reporting, same audit trail."</div>
+    </div>
   </div>
 
   <!-- Card: Global Presence -->
@@ -413,7 +442,7 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
     <div class="question">"Have you actually done this before — in a live mandate, not a sandbox?"</div>
     <div class="clear-answer">
       <h4>Clear's answer — Live across 4 continents, 8+ mandates</h4>
-      <p class="text-[14px] text-slate-800">Clear isn't a UAE-first ASP figuring it out in real-time. We've already navigated live mandates across diverse regulatory models — CTC, Peppol, portal-based — and we're bringing that playbook to UAE.</p>
+      <p class="text-[14px] text-slate-800">Clear isn't a UAE-first ASP figuring it out in real-time. We've already navigated live mandates across diverse regulatory models — Peppol C4/C5, CTC clearance, post-audit — and we're bringing that playbook to UAE.</p>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3 text-[13px]">
         <div class="bg-white rounded-lg border border-amber-100 p-3">
           <div class="font-bold text-amber-800">Europe</div>
@@ -446,7 +475,12 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
     <div class="secondary-strip">
       <strong>Secondary:</strong> Pagero (80+ countries, deepest global footprint — genuine peer on this dimension). SAP (57 countries via DRC). EDICOM (80+ countries). Comarch (60+ countries). All strong here.
     </div>
-    <div class="talk-track">"UAE is not our first mandate — it's our eighth."</div>
+    <div class="talk-track">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#64748b;font-style:normal;margin-bottom:6px">Per persona</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CFO:</strong> "We've done this 8 times — Belgium, Poland, India, KSA. UAE isn't an experiment."</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CIO:</strong> "Same platform running in 4 EU countries + KSA + India + Malaysia. Battle-tested."</div>
+      <div><strong style="color:#2563eb;font-style:normal">Tax Head:</strong> "Peppol C4/C5, CTC clearance, post-audit — we've navigated every compliance model. UAE is familiar territory."</div>
+    </div>
   </div>
 
   <!-- Card: GLStream -->
@@ -475,7 +509,12 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
     <div class="secondary-strip">
       <strong>Secondary:</strong> Pagero has ERP connectors + VAT recon (via ONESOURCE). SAP DRC is native end-to-end inside S/4HANA only. Comarch has cross-system recon. EDICOM has connectors but VAT recon not documented.
     </div>
-    <div class="talk-track">"FTA updates the schema? We push it through GLStream. Your ERP doesn't change."</div>
+    <div class="talk-track">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#64748b;font-style:normal;margin-bottom:6px">Per persona</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CFO:</strong> "Regulatory changes don't trigger budget requests. We absorb them."</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CIO:</strong> "Schema update = our push, not your sprint. Your ERP doesn't change."</div>
+      <div><strong style="color:#2563eb;font-style:normal">Tax Head:</strong> "GLStream keeps your recon and VAT aligned automatically — even after FTA changes."</div>
+    </div>
   </div>
 </section>
 
@@ -516,7 +555,12 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
         <tr><td class="comp"><span class="pill pill-primary">Flick</span></td><td class="gap">Connectors exist. Automated Tax Recon ships with product. Potentially comparable — verify scope.</td></tr>
       </tbody>
     </table>
-    <div class="talk-track">"iPaaS licence + middleware team + month-end recon = what GLStream replaces in two weeks."</div>
+    <div class="talk-track">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#64748b;font-style:normal;margin-bottom:6px">Per persona</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CFO:</strong> "Kill three line items: iPaaS licence, middleware team, and month-end recon hours."</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CIO:</strong> "GLStream replaces your middleware stack in two weeks. No MuleSoft, no Boomi."</div>
+      <div><strong style="color:#2563eb;font-style:normal">Tax Head:</strong> "Recon and VAT assurance are built in — no separate tool, no manual spreadsheet."</div>
+    </div>
   </div>
 
   <!-- Card: AP Connector ROI -->
@@ -540,7 +584,12 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
     <div class="secondary-strip">
       <strong>Secondary:</strong> Pagero has a formal SAP Ariba partnership. SAP owns Ariba + SAP BN natively. EDICOM has a dedicated Ariba + Coupa connector ecosystem. These three are the strongest secondary competitors on AP routing.
     </div>
-    <div class="talk-track">"Your AP team shouldn't be a human router. We route by rule, straight into Coupa or Ariba."</div>
+    <div class="talk-track">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#64748b;font-style:normal;margin-bottom:6px">Per persona</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CFO:</strong> "Eliminate manual AP routing. Fewer errors, faster processing, lower headcount."</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CIO:</strong> "Native Ariba + Coupa connectors. No custom bridge. Rule-based routing."</div>
+      <div><strong style="color:#2563eb;font-style:normal">Tax Head:</strong> "Every inbound invoice lands in the right AP queue automatically. No lost invoices."</div>
+    </div>
   </div>
 
   <!-- Card: Unified API ROI -->
@@ -565,7 +614,12 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
         <tr><td class="comp"><span class="pill pill-primary">Flick</span></td><td class="gap">Developer docs organised by country. 14 countries = potentially 14 integration variations.</td></tr>
       </tbody>
     </table>
-    <div class="talk-track">"They're quoting five integration phases. We're quoting one."</div>
+    <div class="talk-track">
+      <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#64748b;font-style:normal;margin-bottom:6px">Per persona</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CFO:</strong> "They're quoting five integration phases. We're quoting one. Do the math."</div>
+      <div style="margin-bottom:4px"><strong style="color:#2563eb;font-style:normal">CIO:</strong> "One API key, one codebase, one team. Country rollout = config change."</div>
+      <div><strong style="color:#2563eb;font-style:normal">Tax Head:</strong> "Same compliance engine across GCC. One audit framework, not five."</div>
+    </div>
   </div>
 </section>
 
@@ -618,9 +672,70 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
           <li><strong>DR:</strong> "Show me your RTO/RPO document." Cygnet hasn't published one.</li>
           <li><strong>Unified API:</strong> "Show me one API doc covering both UAE and KSA." No public developer portal.</li>
           <li><strong>GLStream:</strong> "Is your ERP connector, recon, and VAT one product or three?" It's three.</li>
-          <li><strong>Scale:</strong> "What's your Peppol volume in KSA specifically?" India volume doesn't transfer.</li>
+          <li><strong>EU presence:</strong> "Are you live in EU Peppol markets?" Clear is live in Belgium, Croatia, Poland, Germany, France-ready. Cygnet's EU footprint is Belgium only.</li>
         </ul>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== WHEN WE LOSE ==================== -->
+<section id="lose" class="sec">
+  <div class="section-hero" style="background:linear-gradient(135deg,#faf5ff,#f3e8ff);border:1px solid #e9d5ff;border-radius:16px;padding:28px 28px 24px;margin-bottom:28px">
+    <span class="hash-chip">#when-we-lose</span>
+    <h1 class="font-heading text-3xl md:text-4xl font-bold mt-3" style="color:#581c87">When we lose — and when to walk away <span style="font-size:13px;padding:3px 10px;border-radius:999px;background:#e9d5ff;color:#6b21a8;vertical-align:middle;font-family:'DM Sans',system-ui,sans-serif;letter-spacing:.04em">WIP</span></h1>
+    <p style="color:#6b21a8" class="mt-2 max-w-2xl text-[15px]">Great sellers know when NOT to fight. These four scenarios drain pipeline energy from winnable deals. Qualify early, cut losses fast, stay warm for the re-engage.</p>
+  </div>
+
+  <!-- SAP Inertia -->
+  <div class="card p-6 md:p-7 mb-6" style="border-left:3px solid #6b21a8">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <span class="pill" style="background:#faf5ff;color:#6b21a8;border:1px solid #e9d5ff;font-size:12px">Walk or qualify hard</span>
+      <span class="font-heading font-bold text-[17px]">SAP inertia</span>
+    </div>
+    <div class="text-[14px] text-slate-700">
+      <p><strong>Signal:</strong> Customer is S/4HANA wall-to-wall. SAP DRC is already bundled in their BTP licence. IT reports to an SAP Centre of Excellence. The CIO sees eInvoicing as "just another DRC content package."</p>
+      <p class="mt-2"><strong>Why we lose:</strong> Integration inertia. DRC is pre-approved in their SAP roadmap and the incremental cost is near-zero because BTP is already paid for. Ripping that out means justifying a new vendor to SAP-aligned IT leadership.</p>
+      <p class="mt-2"><strong>What to do:</strong> Qualify in the first call — "Are you running S/4HANA with BTP, and is DRC already in scope?" If yes and they're single-ERP, deprioritise. Compete only if they're multi-ERP (S/4 + Oracle + Dynamics) — that's where SAP DRC falls apart and GLStream wins.</p>
+    </div>
+  </div>
+
+  <!-- Price-driven local buyer -->
+  <div class="card p-6 md:p-7 mb-6" style="border-left:3px solid #6b21a8">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <span class="pill" style="background:#faf5ff;color:#6b21a8;border:1px solid #e9d5ff;font-size:12px">Let them go</span>
+      <span class="font-heading font-bold text-[17px]">Price-driven local buyer</span>
+    </div>
+    <div class="text-[14px] text-slate-700">
+      <p><strong>Signal:</strong> Choosing the cheapest ASP on the FTA list. No GCC expansion plan. Small invoice volume (<10K/month). Procurement is running a reverse auction.</p>
+      <p class="mt-2"><strong>Why we lose:</strong> Our value story — Unified API, GLStream, DC/DR, Scale — is overkill for a single-entity UAE SME doing 5K invoices/month. We can't compete on price alone against a lean local ASP.</p>
+      <p class="mt-2"><strong>What to do:</strong> Let them go. Stay warm. They'll be back after the first FTA schema change breaks their vendor's integration, or when they expand to KSA and discover their ASP can't follow. Set a 6-month re-engage reminder.</p>
+    </div>
+  </div>
+
+  <!-- Deloitte relationship lock -->
+  <div class="card p-6 md:p-7 mb-6" style="border-left:3px solid #6b21a8">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <span class="pill" style="background:#faf5ff;color:#6b21a8;border:1px solid #e9d5ff;font-size:12px">Partner or walk</span>
+      <span class="font-heading font-bold text-[17px]">Deloitte relationship lock</span>
+    </div>
+    <div class="text-[14px] text-slate-700">
+      <p><strong>Signal:</strong> Deloitte is the existing tax advisory + audit partner. The CFO trusts the Deloitte partner personally. InTax is being positioned as "part of our ongoing relationship."</p>
+      <p class="mt-2"><strong>Why we lose:</strong> Relationship lock. The CFO isn't buying a platform — they're buying continuity with a trusted advisor. Technical superiority doesn't overcome personal trust built over years of audit cycles.</p>
+      <p class="mt-2"><strong>What to do:</strong> Two paths. <strong>Partner:</strong> offer Clear as the platform under Deloitte's advisory wrapper — "Deloitte advises, Clear runs." Deloitte's InTax uses Pagero globally anyway; they're not allergic to third-party platforms. <strong>Walk:</strong> if Deloitte won't engage, deprioritise. The re-engage trigger is when the customer discovers InTax's UAE stack and global stack are two different products.</p>
+    </div>
+  </div>
+
+  <!-- Single-country, no GCC -->
+  <div class="card p-6 md:p-7 mb-6" style="border-left:3px solid #6b21a8">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
+      <span class="pill" style="background:#faf5ff;color:#6b21a8;border:1px solid #e9d5ff;font-size:12px">Reframe the pitch</span>
+      <span class="font-heading font-bold text-[17px]">Single-country, no GCC expansion</span>
+    </div>
+    <div class="text-[14px] text-slate-700">
+      <p><strong>Signal:</strong> UAE-only entity. No subsidiaries in KSA, Qatar, or Oman. No expansion plans on the 3-year horizon. The CFO says "we just need UAE compliance."</p>
+      <p class="mt-2"><strong>Why we struggle:</strong> Our strongest pitch — Unified API, multi-country, GCC rollout in one integration — doesn't land. The prospect doesn't value what they don't need.</p>
+      <p class="mt-2"><strong>What to do:</strong> Don't walk — reframe. Drop the geography pitch entirely. Lead with <strong>GLStream</strong> (2-week integration, eliminates middleware, recon + VAT built in), <strong>DC/DR</strong> (3-tier, published RTO/RPO), and <strong>Scale</strong> (1B invoices/year). These are single-country differentiators that still beat local ASPs on depth. Win on integration speed and operational resilience, not geography.</p>
     </div>
   </div>
 </section>
@@ -635,7 +750,7 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
 </footer>
 
 <script>
-const TABS = ["overview","fear","mandate","roi","matrix"];
+const TABS = ["overview","fear","mandate","roi","matrix","lose"];
 
 // ===== Matrix data =====
 const MATRIX_ROWS = [
