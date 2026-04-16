@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>UAE eInvoicing — Clear ASP Differentiation Brief</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+tailwind.config = {
+  theme: { extend: {
+    fontFamily: { heading: ['Syne','system-ui','sans-serif'], sans: ['DM Sans','system-ui','sans-serif'] },
+    colors: { bg:'#fafaf7', ink:'#0f172a', muted:'#64748b', line:'#e7e5e0', primary:'#2563eb', positive:'#16a34a', warning:'#d97706', danger:'#dc2626' }
+  }}
+}
+</script>
+<style>
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',system-ui,sans-serif;background:#fafaf7;color:#0f172a}
+h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing:-.02em}
+.nav-frost{backdrop-filter:saturate(160%) blur(14px);-webkit-backdrop-filter:saturate(160%) blur(14px);background:rgba(250,250,247,.78);border-bottom:1px solid #e7e5e0}
+.tab-btn{padding:10px 14px;border-radius:10px;font-weight:600;color:#475569;white-space:nowrap;transition:background .18s,color .18s,box-shadow .18s}
+.tab-btn.active{color:#fafaf7;box-shadow:0 0 0 2px rgba(255,255,255,.15),0 0 12px rgba(37,99,235,.25)}
+.tab-btn:not(.active):hover{background:#f1f5f9;color:#0f172a}
+.tab-fear.active{background:#991b1b;box-shadow:0 0 0 2px rgba(153,27,27,.2),0 0 12px rgba(153,27,27,.3)}
+.tab-mandate.active{background:#92400e;box-shadow:0 0 0 2px rgba(146,64,14,.2),0 0 12px rgba(146,64,14,.3)}
+.tab-roi.active{background:#166534;box-shadow:0 0 0 2px rgba(22,101,52,.2),0 0 12px rgba(22,101,52,.3)}
+.tab-matrix.active{background:#0f172a;box-shadow:0 0 0 2px rgba(15,23,42,.2),0 0 12px rgba(15,23,42,.3)}
+@keyframes pulseFear{0%,100%{box-shadow:0 0 0 2px rgba(153,27,27,.15),0 0 8px rgba(153,27,27,.2)}50%{box-shadow:0 0 0 3px rgba(153,27,27,.22),0 0 14px rgba(153,27,27,.3)}}
+@keyframes pulseMandate{0%,100%{box-shadow:0 0 0 2px rgba(146,64,14,.15),0 0 8px rgba(146,64,14,.2)}50%{box-shadow:0 0 0 3px rgba(146,64,14,.22),0 0 14px rgba(146,64,14,.3)}}
+@keyframes pulseRoi{0%,100%{box-shadow:0 0 0 2px rgba(22,101,52,.15),0 0 8px rgba(22,101,52,.2)}50%{box-shadow:0 0 0 3px rgba(22,101,52,.22),0 0 14px rgba(22,101,52,.3)}}
+@keyframes pulseMatrix{0%,100%{box-shadow:0 0 0 2px rgba(15,23,42,.15),0 0 8px rgba(15,23,42,.2)}50%{box-shadow:0 0 0 3px rgba(15,23,42,.22),0 0 14px rgba(15,23,42,.3)}}
+.tab-fear.active{animation:pulseFear 2.5s ease-in-out infinite}
+.tab-mandate.active{animation:pulseMandate 2.5s ease-in-out infinite}
+.tab-roi.active{animation:pulseRoi 2.5s ease-in-out infinite}
+.tab-matrix.active{animation:pulseMatrix 2.5s ease-in-out infinite}
+.sec{display:none}.sec.active{display:block;animation:fadein .28s cubic-bezier(.22,1,.36,1)}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card{background:#fff;border:1px solid #e7e5e0;border-radius:14px;transition:transform .22s cubic-bezier(.22,1,.36,1),box-shadow .22s cubic-bezier(.22,1,.36,1),border-color .22s}
+.card:hover{transform:translateY(-3px);border-color:#93c5fd;box-shadow:0 12px 28px -12px rgba(37,99,235,.22),0 4px 10px -4px rgba(15,23,42,.08)}
+.accent-bar{width:40px;height:3px;border-radius:3px;margin-bottom:12px}
+.accent-fear{background:#dc2626}.accent-mandate{background:#d97706}.accent-roi{background:#16a34a}
+.question{font-family:'Syne',system-ui,sans-serif;font-size:18px;font-weight:700;line-height:1.22;color:#0f172a;letter-spacing:-.02em}
+.clear-answer{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:16px 18px;margin-top:14px}
+.clear-answer h4{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:#1d4ed8;font-weight:700;margin-bottom:6px;font-family:'DM Sans',sans-serif}
+.gap-table{width:100%;border-collapse:separate;border-spacing:0;margin-top:14px;font-size:13px}
+.gap-table th{text-align:left;font-weight:700;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:.06em;padding:8px 12px;border-bottom:1px solid #e7e5e0}
+.gap-table td{padding:8px 12px;border-bottom:1px solid #f1efe9;vertical-align:top}
+.gap-table td.comp{font-weight:600;color:#0f172a;white-space:nowrap}
+.gap-table td.gap{color:#475569}
+.pill{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;line-height:1;white-space:nowrap}
+.pill-clear{background:linear-gradient(135deg,#eff6ff,#ecfdf5);color:#0f172a;border:1px solid #bfdbfe}
+.pill-primary{background:#fef2f2;color:#991b1b;border:1px solid #fecaca}
+.pill-secondary{background:#f5f5f4;color:#57534e;border:1px solid #e7e5e0}
+.talk-track{border-left:3px solid #2563eb;background:#f8fafc;color:#0f172a;padding:12px 16px;border-radius:0 10px 10px 0;font-size:14px;margin-top:14px;font-style:italic}
+.section-hero{border-radius:16px;padding:28px 28px 24px;margin-bottom:28px}
+.hero-fear{background:linear-gradient(135deg,#fef2f2,#fff1f2);border:1px solid #fecaca}
+.hero-mandate{background:linear-gradient(135deg,#fffbeb,#fef3c7);border:1px solid #fde68a}
+.hero-roi{background:linear-gradient(135deg,#ecfdf5,#d1fae5);border:1px solid #a7f3d0}
+.meta-strip{display:flex;flex-wrap:wrap;gap:14px;align-items:center;font-size:12px;color:#64748b}
+.hash-chip{font-size:11px;color:#64748b;background:#f5f5f4;border:1px solid #e7e5e0;padding:2px 8px;border-radius:999px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.secondary-strip{background:#f8fafc;border:1px solid #e7e5e0;border-radius:10px;padding:12px 16px;margin-top:10px;font-size:12px;color:#64748b}
+/* Collapsible sections */
+.collapsible-toggle{display:flex;align-items:center;gap:6px;cursor:pointer;font-size:12px;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.06em;padding:10px 0 2px;border:none;background:none;transition:color .18s}
+.collapsible-toggle:hover{color:#2563eb}
+.collapsible-toggle svg{width:14px;height:14px;transition:transform .25s cubic-bezier(.22,1,.36,1);flex-shrink:0}
+.collapsible-toggle.open svg{transform:rotate(90deg)}
+.collapsible-content{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.22,1,.36,1),opacity .25s ease;opacity:0}
+.collapsible-content.open{opacity:1}
+/* Matrix row hover */
+#matrixTable tbody tr{transition:background .15s}
+#matrixTable tbody tr:hover{background:#f8fafc}
+/* Card counter */
+.card-counter{font-size:12px;font-weight:600;color:#94a3b8;letter-spacing:.02em;display:inline-flex;align-items:center;gap:4px}
+.card-counter .current{color:#2563eb;font-weight:700}
+</style>
+</head>
+<body class="antialiased">
+
+<nav class="nav-frost sticky top-0 z-40">
+  <div class="max-w-5xl mx-auto px-4 md:px-6 py-3 flex items-center gap-4">
+    <a href="#" class="flex items-center gap-2 shrink-0">
+      <div class="w-8 h-8 rounded-lg bg-ink text-bg grid place-items-center font-heading font-bold text-sm">C</div>
+      <div class="leading-tight">
+        <div class="font-heading font-bold text-[15px]">Clear · UAE eInvoicing</div>
+        <div class="text-[11px] text-muted -mt-0.5">ASP Differentiation Brief</div>
+      </div>
+    </a>
+    <div class="ml-auto flex items-center gap-1 overflow-x-auto">
+      <button data-tab="fear" class="tab-btn tab-fear active">Fear</button>
+      <button data-tab="mandate" class="tab-btn tab-mandate">Mandate</button>
+      <button data-tab="roi" class="tab-btn tab-roi">ROI</button>
+      <button data-tab="matrix" class="tab-btn tab-matrix">Matrix</button>
+    </div>
+  </div>
+</nav>
+
+<main class="max-w-5xl mx-auto px-4 md:px-6 py-8 md:py-12">
+
+<!-- ==================== HERO ==================== -->
+<div class="mb-10">
+  <div class="card p-6 md:p-8" style="border-color:#bfdbfe;background:linear-gradient(135deg,#f8fafc,#eff6ff)">
+    <div class="flex flex-col md:flex-row md:items-start gap-6">
+      <div class="flex-1">
+        <div class="text-[11px] uppercase tracking-wider text-primary font-bold mb-2">Why Clear for UAE eInvoicing</div>
+        <h1 class="font-heading text-2xl md:text-3xl font-bold leading-[1.1]">The only pre-approved ASP with world-class DR, proven billion-scale volume, and a unified API across the GCC.</h1>
+        <ul class="mt-4 text-[14px] text-slate-700 space-y-2">
+          <li><strong class="text-ink">Resilience.</strong> 3-tier DC/DR across OCI + AWS, published RTO/RPO — no other primary competitor publishes theirs.</li>
+          <li><strong class="text-ink">Scale.</strong> ~1B eInvoices/year globally, ~3M/year in KSA alone. MAF, Landmark live.</li>
+          <li><strong class="text-ink">One integration.</strong> Unified API — one integration covers UAE, KSA, India, Malaysia, EU. No re-plumbing per country.</li>
+        </ul>
+        <!-- Customer proof -->
+        <div class="mt-4 pt-4 border-t border-blue-100">
+          <div class="text-[11px] uppercase tracking-wider text-muted font-bold mb-1">Trusted by</div>
+          <div class="text-[14px] text-slate-700">MAF, Landmark, and 50+ enterprises across KSA, India, Belgium, Poland, Germany, Croatia, and Malaysia.</div>
+        </div>
+      </div>
+      <!-- Scorecard + Urgency -->
+      <div class="shrink-0 md:w-[280px] flex flex-col gap-3">
+        <!-- Urgency -->
+        <div style="background:#fef2f2;border:1px solid #fecaca;border-radius:10px;padding:14px 16px">
+          <div class="text-[11px] uppercase tracking-wider font-bold" style="color:#991b1b">Mandate deadline</div>
+          <div class="font-heading text-xl font-bold mt-1" style="color:#7f1d1d">Phase 1: July 2026</div>
+          <div class="text-[13px] mt-1" style="color:#991b1b">Phase 2 (>AED 50M): Jan 2027</div>
+          <div class="text-[12px] mt-1" style="color:#b91c1c">Pilot companies must comply by July 2026.</div>
+        </div>
+        <!-- Scorecard -->
+        <div style="background:#fff;border:1px solid #e7e5e0;border-radius:10px;padding:14px 16px">
+          <div class="text-[11px] uppercase tracking-wider text-muted font-bold mb-2">Scorecard (8 capabilities)</div>
+          <div class="space-y-1.5 text-[13px]">
+            <div class="flex justify-between"><span class="font-bold text-primary">Clear</span><span class="font-heading font-bold text-primary">8 / 8</span></div>
+            <div class="flex justify-between"><span class="text-slate-600">SUNTEC</span><span class="font-heading font-bold text-slate-800">3 / 8</span></div>
+            <div class="flex justify-between"><span class="text-slate-600">Cygnet</span><span class="font-heading font-bold text-slate-800">2 / 8</span></div>
+            <div class="flex justify-between"><span class="text-slate-600">Flick</span><span class="font-heading font-bold text-slate-800">1 / 8</span></div>
+            <div class="flex justify-between"><span class="text-slate-600">Taxilla</span><span class="font-heading font-bold text-slate-800">0 / 8</span></div>
+            <div class="flex justify-between"><span class="text-slate-600">Deloitte</span><span class="font-heading font-bold text-slate-800">0 / 8</span></div>
+          </div>
+          <div class="text-[11px] text-muted mt-2">Score = confirmed "Yes" across all 8 capability rows.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== FEAR ==================== -->
+<section id="fear" class="sec active">
+  <div class="section-hero hero-fear">
+    <span class="hash-chip">#fear</span>
+    <h1 class="font-heading text-3xl md:text-4xl font-bold mt-3 text-[#7f1d1d]">What keeps your CFO up at night?</h1>
+    <p class="text-[#991b1b] mt-2 max-w-2xl text-[15px]">The wrong ASP choice creates risk that compounds — downtime on filing day, validation failures at 11pm, a mandate change that breaks your integration. These are the fear-triggers, and here is how Clear addresses each one.</p>
+  </div>
+
+  <!-- Card: DC/DR -->
+  <div class="card p-6 md:p-7 mb-6">
+    <div class="accent-bar accent-fear"></div>
+    <div class="question">"What if your ASP goes down on filing day?"</div>
+    <div class="clear-answer">
+      <h4>Clear's answer — 3-Tier DC/DR</h4>
+      <p class="text-[14px] text-slate-800">Three-tier active-passive disaster recovery, defence-in-depth. No single point of failure — whether at the availability zone, cloud provider, or regional level.</p>
+      <div class="grid md:grid-cols-3 gap-3 mt-3 text-[13px]">
+        <div class="bg-white rounded-lg border border-blue-100 p-3">
+          <div class="font-bold text-blue-800">Tier 1 — Primary</div>
+          <div class="text-slate-700 mt-1">OCI UAE (central + east)</div>
+          <div class="text-slate-500 mt-1">RTO &lt;1 hour · RPO &lt;15 min</div>
+        </div>
+        <div class="bg-white rounded-lg border border-blue-100 p-3">
+          <div class="font-bold text-blue-800">Tier 2 — Cross-Cloud DR</div>
+          <div class="text-slate-700 mt-1">AWS UAE region</div>
+          <div class="text-slate-500 mt-1">RTO &lt;4 hours · RPO &lt;1 hour</div>
+        </div>
+        <div class="bg-white rounded-lg border border-blue-100 p-3">
+          <div class="font-bold text-blue-800">Tier 3 — Geo-Redundant</div>
+          <div class="text-slate-700 mt-1">AWS EU region</div>
+          <div class="text-slate-500 mt-1">RTO &lt;12 hours · RPO &lt;8 hours</div>
+        </div>
+      </div>
+    </div>
+    <table class="gap-table">
+      <thead><tr><th>Competitor</th><th>Gap</th></tr></thead>
+      <tbody>
+        <tr><td class="comp"><span class="pill pill-primary">Cygnet</span></td><td class="gap">AWS-based, Kubernetes + multi-region design claimed. No published RTO/RPO for eInvoicing platform.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Taxilla</span></td><td class="gap">AWS Marketplace listing. No published DR architecture or RTO/RPO documentation.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">SUNTEC</span></td><td class="gap">Cloud-native claim. No published DR architecture or RTO/RPO documentation.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Deloitte</span></td><td class="gap">InTax DR architecture not publicly documented. DR expertise is services-led, not product-level SLA.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Flick</span></td><td class="gap">UAE-focused SaaS. No published DR architecture or RTO/RPO documentation.</td></tr>
+      </tbody>
+    </table>
+    <div class="secondary-strip">
+      <strong>Secondary competitors:</strong> SAP BTP has published In-Metro DR (RPO 5min / RTO 2hr) — comparable but two-tier, not three. Pagero, EDICOM, Comarch: no published RTO/RPO.
+    </div>
+    <div class="talk-track">"Ask for their DR document with RTO/RPO. We'll hand you ours today."</div>
+  </div>
+
+  <!-- Card: Security -->
+  <div class="card p-6 md:p-7 mb-6">
+    <div class="accent-bar accent-fear"></div>
+    <div class="question">"Will your ASP survive your CISO's security audit?"</div>
+    <div class="clear-answer">
+      <h4>Clear's answer — Enterprise-grade security posture</h4>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mt-2 text-[13px]">
+        <div class="bg-white rounded-lg border border-blue-100 p-3">
+          <div class="font-bold text-blue-800">SOC 2 Type II</div>
+          <div class="text-slate-600 mt-1">Independently audited security controls</div>
+        </div>
+        <div class="bg-white rounded-lg border border-blue-100 p-3">
+          <div class="font-bold text-blue-800">ISO 27001:2022 & ISO 22301:2019</div>
+          <div class="text-slate-600 mt-1">Certified info security & business continuity</div>
+        </div>
+        <div class="bg-white rounded-lg border border-blue-100 p-3">
+          <div class="font-bold text-blue-800">VAPT by 3rd Party</div>
+          <div class="text-slate-600 mt-1">Regular penetration testing & hardening</div>
+        </div>
+        <div class="bg-white rounded-lg border border-blue-100 p-3">
+          <div class="font-bold text-blue-800">SSL + AES-256</div>
+          <div class="text-slate-600 mt-1">Encrypted in transit & at rest</div>
+        </div>
+        <div class="bg-white rounded-lg border border-blue-100 p-3">
+          <div class="font-bold text-blue-800">RBAC + Auth Tokens</div>
+          <div class="text-slate-600 mt-1">Granular permissions + secure API access</div>
+        </div>
+        <div class="bg-white rounded-lg border border-blue-100 p-3">
+          <div class="font-bold text-blue-800">UAE Data Residency</div>
+          <div class="text-slate-600 mt-1">AWS ME (UAE), multi-AZ, PDPL aligned</div>
+        </div>
+      </div>
+    </div>
+    <table class="gap-table">
+      <thead><tr><th>Competitor</th><th>Gap</th></tr></thead>
+      <tbody>
+        <tr><td class="comp"><span class="pill pill-primary">Cygnet</span></td><td class="gap">AWS-hosted. Claims data residency alignment. SOC 2 Type II and ISO 27001 certifications not publicly surfaced for the eInvoicing platform specifically.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Taxilla</span></td><td class="gap">AWS Marketplace listing suggests baseline AWS security. SOC 2, ISO 27001 certifications not publicly documented.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">SUNTEC</span></td><td class="gap">Claims GDPR-ready, SAML2, ISO 27002, SOC-2 guidelines adherence. Closest to Clear's posture among primary competitors.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Deloitte</span></td><td class="gap">Deloitte itself has enterprise security credentials. InTax product-specific certifications (SOC 2, ISO for the platform) not separately documented.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Flick</span></td><td class="gap">Emerging ASP. No published security certifications or compliance documentation for the platform.</td></tr>
+      </tbody>
+    </table>
+    <div class="secondary-strip">
+      <strong>Secondary:</strong> SAP BTP carries SAP's enterprise security stack (SOC 2, ISO 27001, CSA STAR). Pagero (Thomson Reuters) also has strong compliance posture. These two are peers on security.
+    </div>
+    <div class="talk-track">"Hand this to your CISO. SOC 2, ISO 27001, AES-256, UAE residency. Ask the other vendor for theirs."</div>
+  </div>
+
+  <!-- Card: Scale -->
+  <div class="card p-6 md:p-7 mb-6">
+    <div class="accent-bar accent-fear"></div>
+    <div class="question">"Can your ASP actually handle your volume — B2B, B2C, and B2G at once?"</div>
+    <div class="clear-answer">
+      <h4>Clear's answer — Proven scale</h4>
+      <div class="grid md:grid-cols-3 gap-3 mt-1 text-[13.5px]">
+        <div class="text-center">
+          <div class="font-heading text-3xl font-bold text-blue-800">~1B</div>
+          <div class="text-slate-600 mt-1">eInvoices per year<br>transmitted globally</div>
+        </div>
+        <div class="text-center">
+          <div class="font-heading text-3xl font-bold text-blue-800">~3M</div>
+          <div class="text-slate-600 mt-1">eInvoices per year<br>in KSA alone</div>
+        </div>
+        <div class="text-center">
+          <div class="font-heading text-3xl font-bold text-blue-800">MAF · Landmark</div>
+          <div class="text-slate-600 mt-1">VLC-grade clients<br>live in KSA</div>
+        </div>
+      </div>
+    </div>
+    <table class="gap-table">
+      <thead><tr><th>Competitor</th><th>Gap</th></tr></thead>
+      <tbody>
+        <tr><td class="comp"><span class="pill pill-primary">Cygnet</span></td><td class="gap">200M+ e-Invoices and 5B+ transactions globally (per PR). India-heavy. UAE/KSA Peppol scale numbers not published separately.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Taxilla</span></td><td class="gap">No public volume numbers. Positioning is mid-market; VLC proof points not surfaced.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">SUNTEC</span></td><td class="gap">BFSI billing heritage. eInvoicing scale numbers not published.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Deloitte</span></td><td class="gap">Advisory-led. No product-level transaction volume numbers for InTax.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Flick</span></td><td class="gap">Emerging ASP. Scale proof points not published. Enterprise VLC references not surfaced.</td></tr>
+      </tbody>
+    </table>
+    <div class="secondary-strip">
+      <strong>Secondary:</strong> SAP processes massive volumes natively (within SAP ecosystem). Pagero handles billions via ONESOURCE Pagero Network. Both are credible on scale.
+    </div>
+    <div class="talk-track">"We transmit a billion invoices a year. Ask your vendor for their number."</div>
+  </div>
+
+  <!-- Card: Validation Engine -->
+  <div class="card p-6 md:p-7 mb-6">
+    <div class="accent-bar accent-fear"></div>
+    <div class="question">"What happens when the FTA rejects your invoice at 11pm?"</div>
+    <div class="clear-answer">
+      <h4>Clear's answer — Agentic Validation Failure Engine</h4>
+      <p class="text-[14px] text-slate-800">In new go-live countries, government systems evolve. Validation failures are common and full of technical jargon. Clear's agent:</p>
+      <ul class="mt-2 text-[13.5px] text-slate-700 space-y-1.5 list-disc pl-5">
+        <li><strong>Simplifies</strong> — translates cryptic FTA error codes into plain-English explanations.</li>
+        <li><strong>Learns</strong> — builds a pattern library from failures across the customer base.</li>
+        <li><strong>Solves</strong> — on customer command, corrects the validation failure and regenerates the eInvoice.</li>
+        <li><strong>Safeguards</strong> — approval workflows ensure no invoice is resubmitted without sign-off.</li>
+      </ul>
+    </div>
+    <table class="gap-table">
+      <thead><tr><th>Competitor</th><th>Gap</th></tr></thead>
+      <tbody>
+        <tr><td class="comp"><span class="pill pill-primary">Cygnet</span></td><td class="gap">Manual retry / error dashboard. No agentic resolution documented.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Taxilla</span></td><td class="gap">Validation rules management exists. Auto-correction / learning agent not documented.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">SUNTEC</span></td><td class="gap">Real-time validation claimed. Auto-correction on failure not documented.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Deloitte</span></td><td class="gap">Services-led troubleshooting. No product-level auto-fix engine.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Flick</span></td><td class="gap">Validation before submission documented. Post-rejection auto-correction not documented.</td></tr>
+      </tbody>
+    </table>
+    <div class="secondary-strip">
+      <strong>Secondary:</strong> No competitor in the pre-approved ASP list publicly documents an agentic validation-failure engine. This is a category-creating capability.
+    </div>
+    <div class="talk-track">"Validation failures at 11pm? Our agent fixes them while your team sleeps."</div>
+  </div>
+</section>
+
+<!-- ==================== MANDATE ==================== -->
+<section id="mandate" class="sec">
+  <div class="section-hero hero-mandate">
+    <span class="hash-chip">#mandate</span>
+    <h1 class="font-heading text-3xl md:text-4xl font-bold mt-3 text-[#78350f]">What does the mandate actually require?</h1>
+    <p class="text-[#92400e] mt-2 max-w-2xl text-[15px]">UAE is Phase 1 — KSA, Oman, Bahrain, Qatar are next. The mandate isn't a one-time project; it's a rolling compliance obligation across the GCC. Pick the ASP that's built for that trajectory, not just one country.</p>
+  </div>
+
+  <!-- Card: Unified API -->
+  <div class="card p-6 md:p-7 mb-6">
+    <div class="accent-bar accent-mandate"></div>
+    <div class="question">"One integration for UAE today, KSA tomorrow, Oman next year?"</div>
+    <div class="clear-answer">
+      <h4>Clear's answer — Unified API</h4>
+      <p class="text-[14px] text-slate-800">Single API + single documentation set. Country is a parameter, not a separate integration. Integrate once — go live in any country Clear supports. No new development per country rollout.</p>
+      <div class="flex flex-wrap gap-2 mt-3">
+        <span class="pill pill-clear">UAE</span>
+        <span class="pill pill-clear">KSA</span>
+        <span class="pill pill-clear">India</span>
+        <span class="pill pill-clear">Malaysia</span>
+        <span class="pill pill-clear">+ more</span>
+      </div>
+    </div>
+    <table class="gap-table">
+      <thead><tr><th>Competitor</th><th>Gap</th></tr></thead>
+      <tbody>
+        <tr><td class="comp"><span class="pill pill-primary">Cygnet</span></td><td class="gap">Claims API-first unified platform (14+ countries). No public developer portal or single-API documentation to verify.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Taxilla</span></td><td class="gap">Public site lists country-specific product pages (India, UAE, KSA, Poland, etc.) — separate, not unified.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">SUNTEC</span></td><td class="gap">Claims country-agnostic API-first architecture. No public developer portal or API docs to verify.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Deloitte</span></td><td class="gap">Two stacks: InTax for Middle East, Pagero-powered globally. Not one API — integration differs by geography.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Flick</span></td><td class="gap">Developer docs organised by country (14 countries listed separately). Not a unified single-API model.</td></tr>
+      </tbody>
+    </table>
+    <div class="secondary-strip">
+      <strong>Secondary:</strong> Pagero has a unified API (confirmed, documented developer portal). SAP DRC is unified inside S/4HANA ecosystem only. EDICOM and Comarch require per-country customisation.
+    </div>
+    <div class="talk-track">"How many integrations did they quote for GCC? We quoted one."</div>
+  </div>
+
+  <!-- Card: Global Presence -->
+  <div class="card p-6 md:p-7 mb-6">
+    <div class="accent-bar accent-mandate"></div>
+    <div class="question">"Have you actually done this before — in a live mandate, not a sandbox?"</div>
+    <div class="clear-answer">
+      <h4>Clear's answer — Live across 4 continents, 8+ mandates</h4>
+      <p class="text-[14px] text-slate-800">Clear isn't a UAE-first ASP figuring it out in real-time. We've already navigated live mandates across diverse regulatory models — CTC, Peppol, portal-based — and we're bringing that playbook to UAE.</p>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3 text-[13px]">
+        <div class="bg-white rounded-lg border border-amber-100 p-3">
+          <div class="font-bold text-amber-800">Europe</div>
+          <div class="text-slate-700 mt-1">Belgium, Poland, Croatia, Germany</div>
+        </div>
+        <div class="bg-white rounded-lg border border-amber-100 p-3">
+          <div class="font-bold text-amber-800">SEA</div>
+          <div class="text-slate-700 mt-1">Malaysia</div>
+        </div>
+        <div class="bg-white rounded-lg border border-amber-100 p-3">
+          <div class="font-bold text-amber-800">Asia</div>
+          <div class="text-slate-700 mt-1">India</div>
+        </div>
+        <div class="bg-white rounded-lg border border-amber-100 p-3">
+          <div class="font-bold text-amber-800">Middle East</div>
+          <div class="text-slate-700 mt-1">KSA (live), UAE (in progress — among first 5 pre-approved ASPs)</div>
+        </div>
+      </div>
+    </div>
+    <table class="gap-table">
+      <thead><tr><th>Competitor</th><th>Gap</th></tr></thead>
+      <tbody>
+        <tr><td class="comp"><span class="pill pill-primary">Cygnet</span></td><td class="gap">14+ countries (India, UAE, KSA, Malaysia, Singapore, Belgium, Kenya). Strong India heritage. EU + SEA footprint growing but thinner than Clear's EU depth (4 EU countries live).</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Taxilla</span></td><td class="gap">Claims India, UAE, KSA, Poland, Kenya, Romania, Australia, NZ, Japan, Malaysia. Breadth on paper, but country-specific product pages (not unified) suggest varied depth per market.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">SUNTEC</span></td><td class="gap">UAE and KSA mentioned. BFSI billing heritage. EU and SEA eInvoicing mandates not in public portfolio.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Deloitte</span></td><td class="gap">InTax covers UAE + KSA. Global coverage is via Pagero (separate stack). No own-stack EU or SEA presence.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Flick</span></td><td class="gap">Docs list 14 countries (Argentina to Spain) but each is a separate integration. UAE-focused in practice. Live EU/SEA volume not evidenced.</td></tr>
+      </tbody>
+    </table>
+    <div class="secondary-strip">
+      <strong>Secondary:</strong> Pagero (80+ countries, deepest global footprint — genuine peer on this dimension). SAP (57 countries via DRC). EDICOM (80+ countries). Comarch (60+ countries). All strong here.
+    </div>
+    <div class="talk-track">"UAE is not our first mandate — it's our eighth."</div>
+  </div>
+
+  <!-- Card: GLStream -->
+  <div class="card p-6 md:p-7 mb-6">
+    <div class="accent-bar accent-mandate"></div>
+    <div class="question">"The mandate changed mid-rollout. Now what?"</div>
+    <div class="clear-answer">
+      <h4>Clear's answer — GLStream</h4>
+      <p class="text-[14px] text-slate-800">Pre-built connector to all major ERPs (SAP, Oracle, MS Dynamics, NetSuite, Tally, Sage). ~2 weeks integration. Once connected, any regulatory change is handled by Clear — no new development, no change request, no budget cycle on your side.</p>
+      <ul class="mt-2 text-[13.5px] text-slate-700 space-y-1.5 list-disc pl-5">
+        <li><strong>Extracts</strong> invoice + GL data directly from ERP</li>
+        <li><strong>Converts</strong> to Peppol / PINT AE compliant eInvoice</li>
+        <li><strong>Delivers</strong> out-of-the-box Reconciliation and VAT assurance — no new development</li>
+      </ul>
+    </div>
+    <table class="gap-table">
+      <thead><tr><th>Competitor</th><th>Gap</th></tr></thead>
+      <tbody>
+        <tr><td class="comp"><span class="pill pill-primary">Cygnet</span></td><td class="gap">ERP connectors + GL/VAT recon exist — but as separate products (e-Invoicing + GL Reconciliation + Cygnet Tax). Not one integrated stack.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Taxilla</span></td><td class="gap">GL extraction + UAE VAT + recon exist but split across multiple product lines. Bundled, not unified.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">SUNTEC</span></td><td class="gap">Xelerate platform: ERP adapters + VAT module as modules of same platform. Comparable on paper.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Deloitte</span></td><td class="gap">Services-led: Deloitte implements tax-enabled ERP but InTax has no publicly documented pre-built connector set.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Flick</span></td><td class="gap">Broadest published ERP connector list. Automated Tax Reconciliation ships with the product. Comparable on paper.</td></tr>
+      </tbody>
+    </table>
+    <div class="secondary-strip">
+      <strong>Secondary:</strong> Pagero has ERP connectors + VAT recon (via ONESOURCE). SAP DRC is native end-to-end inside S/4HANA only. Comarch has cross-system recon. EDICOM has connectors but VAT recon not documented.
+    </div>
+    <div class="talk-track">"FTA updates the schema? We push it through GLStream. Your ERP doesn't change."</div>
+  </div>
+</section>
+
+<!-- ==================== ROI ==================== -->
+<section id="roi" class="sec">
+  <div class="section-hero hero-roi">
+    <span class="hash-chip">#roi</span>
+    <h1 class="font-heading text-3xl md:text-4xl font-bold mt-3 text-[#14532d]">Where do the savings actually land?</h1>
+    <p class="text-[#166534] mt-2 max-w-2xl text-[15px]">eInvoicing compliance is a cost centre — unless your ASP turns it into an efficiency play. Clear's packages collapse integration cost, eliminate middleware, and remove manual AP routing. Here's the math.</p>
+  </div>
+
+  <!-- Card: GLStream ROI -->
+  <div class="card p-6 md:p-7 mb-6">
+    <div class="accent-bar accent-roi"></div>
+    <div class="question">"How much are you spending on middleware and reconciliation today?"</div>
+    <div class="clear-answer">
+      <h4>Clear's answer — GLStream eliminates middleware</h4>
+      <div class="grid md:grid-cols-3 gap-3 mt-2 text-[13.5px]">
+        <div class="bg-white rounded-lg border border-green-100 p-3 text-center">
+          <div class="font-heading text-xl font-bold text-green-800">iPaaS licence</div>
+          <div class="text-slate-600 mt-1">Eliminated. GLStream connects directly.</div>
+          <div class="font-heading text-lg font-bold text-green-700 mt-2">~$30K-100K/yr saved</div>
+        </div>
+        <div class="bg-white rounded-lg border border-green-100 p-3 text-center">
+          <div class="font-heading text-xl font-bold text-green-800">Middleware team</div>
+          <div class="text-slate-600 mt-1">Eliminated. No custom bridge to maintain.</div>
+          <div class="font-heading text-lg font-bold text-green-700 mt-2">~1-2 FTE redeployed</div>
+        </div>
+        <div class="bg-white rounded-lg border border-green-100 p-3 text-center">
+          <div class="font-heading text-xl font-bold text-green-800">Month-end recon</div>
+          <div class="text-slate-600 mt-1">Automated. VAT assurance out of the box.</div>
+          <div class="font-heading text-lg font-bold text-green-700 mt-2">~40-80 hrs/month saved</div>
+        </div>
+      </div>
+    </div>
+    <table class="gap-table">
+      <thead><tr><th>Competitor</th><th>Cost implication for the customer</th></tr></thead>
+      <tbody>
+        <tr><td class="comp"><span class="pill pill-primary">Cygnet</span></td><td class="gap">Separate products for eInvoice + GL Recon + Tax. Each is a separate line item + integration effort.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Taxilla</span></td><td class="gap">Multiple product lines (eInvoice + VAT + Recon). Customer assembles the stack — more vendor management, more integration.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">SUNTEC</span></td><td class="gap">Module-based. ERP adapters + VAT are platform modules — pricing depends on bundle size.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Deloitte</span></td><td class="gap">Services-led. Every integration, recon workflow, and regulatory update is a change order with a day rate.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Flick</span></td><td class="gap">Connectors exist. Automated Tax Recon ships with product. Potentially comparable — verify scope.</td></tr>
+      </tbody>
+    </table>
+    <div class="talk-track">"iPaaS licence + middleware team + month-end recon = what GLStream replaces in two weeks."</div>
+  </div>
+
+  <!-- Card: AP Connector ROI -->
+  <div class="card p-6 md:p-7 mb-6">
+    <div class="accent-bar accent-roi"></div>
+    <div class="question">"Who's downloading millions of invoices and routing them manually?"</div>
+    <div class="clear-answer">
+      <h4>Clear's answer — AP Connector</h4>
+      <p class="text-[14px] text-slate-800">Customised routing engine connected to AP inboxes, Ariba, and Coupa. Rule-based: by supplier, entity, PO vs non-PO, amount threshold. Inbound Peppol eInvoices land exactly where AP already works — no download-and-push, no human router, no error-prone manual decisions.</p>
+    </div>
+    <table class="gap-table">
+      <thead><tr><th>Competitor</th><th>Cost implication for the customer</th></tr></thead>
+      <tbody>
+        <tr><td class="comp"><span class="pill pill-primary">Cygnet</span></td><td class="gap">Invoice Management System for inbound. No documented native Ariba / Coupa connectors — customer builds the bridge.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Taxilla</span></td><td class="gap">Own AP automation with basic routing. Ariba / Coupa connectors not documented — manual routing likely.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">SUNTEC</span></td><td class="gap">BFSI billing heritage. No documented AP routing to Ariba / Coupa.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Deloitte</span></td><td class="gap">Deloitte implements Ariba / Coupa as a services engagement. Not a product-level connector.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Flick</span></td><td class="gap">Receiver ASP (C3) functionality documented. Native Ariba / Coupa connectors not documented.</td></tr>
+      </tbody>
+    </table>
+    <div class="secondary-strip">
+      <strong>Secondary:</strong> Pagero has a formal SAP Ariba partnership. SAP owns Ariba + SAP BN natively. EDICOM has a dedicated Ariba + Coupa connector ecosystem. These three are the strongest secondary competitors on AP routing.
+    </div>
+    <div class="talk-track">"Your AP team shouldn't be a human router. We route by rule, straight into Coupa or Ariba."</div>
+  </div>
+
+  <!-- Card: Unified API ROI -->
+  <div class="card p-6 md:p-7 mb-6">
+    <div class="accent-bar accent-roi"></div>
+    <div class="question">"5 countries, 5 integrations, 5x the cost?"</div>
+    <div class="clear-answer">
+      <h4>Clear's answer — Unified API = one integration cost</h4>
+      <p class="text-[14px] text-slate-800">One API. One integration project. Every country rollout is a configuration change, not a development project. UAE today, KSA tomorrow, Oman next quarter — same codebase, same team, same API key.</p>
+      <div class="bg-white rounded-lg border border-green-100 p-3 mt-3 text-center">
+        <div class="font-heading text-2xl font-bold text-green-800">~80% less integration cost per country</div>
+        <div class="text-slate-600 text-[13px] mt-1">Country rollout = config change, not a project</div>
+      </div>
+    </div>
+    <table class="gap-table">
+      <thead><tr><th>Competitor</th><th>Cost implication for the customer</th></tr></thead>
+      <tbody>
+        <tr><td class="comp"><span class="pill pill-primary">Cygnet</span></td><td class="gap">No verified single-API documentation. Each country may require separate integration scoping.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Taxilla</span></td><td class="gap">Country-specific product pages = separate implementations. N countries = N integration efforts.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">SUNTEC</span></td><td class="gap">Claims country-agnostic architecture but no verified API documentation. Integration effort per country unclear.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Deloitte</span></td><td class="gap">InTax (UAE) + Pagero (global) = two stacks. GCC rollout = two vendors, two integrations, two contracts.</td></tr>
+        <tr><td class="comp"><span class="pill pill-primary">Flick</span></td><td class="gap">Developer docs organised by country. 14 countries = potentially 14 integration variations.</td></tr>
+      </tbody>
+    </table>
+    <div class="talk-track">"They're quoting five integration phases. We're quoting one."</div>
+  </div>
+</section>
+
+<!-- ==================== MATRIX ==================== -->
+<section id="matrix" class="sec">
+  <div class="section-hero" style="background:linear-gradient(135deg,#f8fafc,#f1f5f9);border:1px solid #e2e8f0;border-radius:16px;padding:28px 28px 24px;margin-bottom:28px">
+    <span class="hash-chip">#matrix</span>
+    <h1 class="font-heading text-3xl md:text-4xl font-bold mt-3 text-ink">Battle Matrix — at a glance</h1>
+    <p class="text-muted mt-2 max-w-2xl text-[15px]">8 Clear capabilities vs. 5 primary competitors. Each cell = Yes / Maybe / No with the competitor gap. Lens tags show which selling angle (Fear / Mandate / ROI) each package serves.</p>
+  </div>
+
+  <div class="flex flex-wrap gap-2 mb-4 text-[12px]">
+    <span style="display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:999px;font-weight:700;background:#fef2f2;color:#991b1b;border:1px solid #fecaca">F = Fear</span>
+    <span style="display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:999px;font-weight:700;background:#fffbeb;color:#92400e;border:1px solid #fde68a">M = Mandate</span>
+    <span style="display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:999px;font-weight:700;background:#ecfdf5;color:#166534;border:1px solid #a7f3d0">R = ROI</span>
+    <span class="ml-2" style="display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:999px;font-weight:700;background:#ecfdf5;color:#047857;border:1px solid #a7f3d0">Yes</span>
+    <span style="display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:999px;font-weight:700;background:#fffbeb;color:#b45309;border:1px solid #fde68a">Maybe</span>
+    <span style="display:inline-flex;align-items:center;gap:4px;padding:2px 10px;border-radius:999px;font-weight:700;background:#f5f5f4;color:#57534e;border:1px solid #e7e5e0">No</span>
+  </div>
+
+  <div style="overflow-x:auto;border:1px solid #e7e5e0;border-radius:14px;background:#fff">
+    <table id="matrixTable" style="width:100%;border-collapse:separate;border-spacing:0;min-width:900px">
+      <thead>
+        <tr>
+          <th style="text-align:left;padding:14px 16px;background:#faf7f1;font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#0f172a;border-bottom:1px solid #e7e5e0;min-width:260px">Package</th>
+          <th style="padding:14px 12px;background:#fbfdff;font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#1d4ed8;border-bottom:1px solid #e7e5e0;border-left:1px solid #dbeafe;border-right:1px solid #dbeafe;text-align:center">Clear</th>
+          <th style="padding:14px 12px;background:#faf7f1;font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#0f172a;border-bottom:1px solid #e7e5e0;text-align:center">Cygnet</th>
+          <th style="padding:14px 12px;background:#faf7f1;font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#0f172a;border-bottom:1px solid #e7e5e0;text-align:center">Taxilla</th>
+          <th style="padding:14px 12px;background:#faf7f1;font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#0f172a;border-bottom:1px solid #e7e5e0;text-align:center">SUNTEC</th>
+          <th style="padding:14px 12px;background:#faf7f1;font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#0f172a;border-bottom:1px solid #e7e5e0;text-align:center">Deloitte</th>
+          <th style="padding:14px 12px;background:#faf7f1;font-weight:700;font-size:12px;letter-spacing:.04em;text-transform:uppercase;color:#0f172a;border-bottom:1px solid #e7e5e0;text-align:center">Flick</th>
+        </tr>
+      </thead>
+      <tbody id="matrixBody"></tbody>
+    </table>
+  </div>
+
+  <div class="secondary-strip mt-4">
+    <strong>Secondary competitors (Pagero, SAP, EDICOM, Comarch)</strong> — see individual Fear / Mandate / ROI tabs for inline notes on each.
+  </div>
+
+  <!-- Cygnet breakout -->
+  <div class="card p-5 md:p-6 mt-6" style="border-color:#fecaca;background:linear-gradient(135deg,#fff,#fef2f2)">
+    <div class="flex items-start gap-3">
+      <span class="pill pill-primary" style="font-size:12px">Highest threat</span>
+      <div>
+        <div class="font-heading font-bold text-[16px]">Cygnet is the most likely competitor you'll face</div>
+        <p class="text-[13px] text-slate-600 mt-1">14+ countries, 200M+ invoices, AWS Advanced Partner, comparable global footprint. They score 2/8 on our matrix — but in a live deal, they'll claim more. Here's where to press:</p>
+        <ul class="text-[13px] text-slate-700 mt-2 space-y-1 list-disc pl-5">
+          <li><strong>DR:</strong> "Show me your RTO/RPO document." Cygnet hasn't published one.</li>
+          <li><strong>Unified API:</strong> "Show me one API doc covering both UAE and KSA." No public developer portal.</li>
+          <li><strong>GLStream:</strong> "Is your ERP connector, recon, and VAT one product or three?" It's three.</li>
+          <li><strong>Scale:</strong> "What's your Peppol volume in KSA specifically?" India volume doesn't transfer.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="max-w-5xl mx-auto px-4 md:px-6 pb-10">
+  <div class="text-[12px] text-muted max-w-3xl">
+    <p><strong class="text-slate-700">Source note.</strong> Competitor gaps reflect public product pages, developer portals, Peppol Authority listings, and vendor press releases accessed April 2026. Where public documentation is silent, gaps are flagged as "not documented" rather than "doesn't exist." Scrub before any external citation.</p>
+    <p class="mt-2"><strong class="text-slate-700">Primary competitors:</strong> Cygnet, Taxilla, SUNTEC (Xelerate), Deloitte (InTax), Flick Network. <strong>Secondary:</strong> Pagero, SAP, EDICOM, Comarch — referenced inline where relevant.</p>
+  </div>
+</footer>
+
+<script>
+const TABS = ["fear","mandate","roi","matrix"];
+
+// ===== Matrix data =====
+const MATRIX_ROWS = [
+  {
+    pkg: "DC/DR",
+    sub: "3-tier active-passive, published RTO/RPO",
+    lens: ["F"],
+    clear: { s: "yes", g: "3-tier: OCI UAE \u2192 AWS UAE \u2192 AWS EU. RTO <1h, RPO <15m." },
+    cygnet: { s: "maybe", g: "AWS + K8s. No published RTO/RPO." },
+    taxilla: { s: "maybe", g: "AWS-based. No published RTO/RPO." },
+    suntec: { s: "maybe", g: "Cloud-native claim. No published RTO/RPO." },
+    deloitte: { s: "maybe", g: "InTax DR not documented. DR is services-led." },
+    flick: { s: "maybe", g: "No published DR architecture." }
+  },
+  {
+    pkg: "Security & Compliance",
+    sub: "SOC 2 Type II, ISO 27001, AES-256, UAE data residency, PDPL",
+    lens: ["F"],
+    clear: { s: "yes", g: "SOC 2 Type II + ISO 27001:2022 + ISO 22301:2019 + VAPT + AES-256 + RBAC + UAE data residency + PDPL aligned." },
+    cygnet: { s: "maybe", g: "AWS-hosted. SOC 2 / ISO 27001 not publicly surfaced for eInvoicing platform." },
+    taxilla: { s: "maybe", g: "AWS-based. Security certifications not publicly documented." },
+    suntec: { s: "yes", g: "Claims GDPR-ready, SAML2, ISO 27002, SOC-2 adherence." },
+    deloitte: { s: "maybe", g: "Deloitte has enterprise creds. InTax platform-specific certs not documented separately." },
+    flick: { s: "no", g: "No published security certifications." }
+  },
+  {
+    pkg: "Scale",
+    sub: "Proven B2B/B2C/B2G volume at VLC grade",
+    lens: ["F"],
+    clear: { s: "yes", g: "~1B/yr globally. ~3M/yr KSA. MAF, Landmark live." },
+    cygnet: { s: "maybe", g: "200M+ invoices claimed. India-heavy, UAE Peppol scale unknown." },
+    taxilla: { s: "maybe", g: "No public volume numbers." },
+    suntec: { s: "maybe", g: "BFSI billing scale; eInvoicing volume unknown." },
+    deloitte: { s: "maybe", g: "No product-level volume numbers." },
+    flick: { s: "maybe", g: "Emerging ASP. Scale proof not published." }
+  },
+  {
+    pkg: "Validation Engine",
+    sub: "Agentic auto-fix for validation failures",
+    lens: ["F"],
+    clear: { s: "yes", g: "AI agent simplifies, learns, auto-corrects, regenerates with workflow safeguards." },
+    cygnet: { s: "no", g: "Manual retry / error dashboard." },
+    taxilla: { s: "no", g: "Validation rules exist. No agentic resolution." },
+    suntec: { s: "no", g: "Real-time validation. No auto-correction engine." },
+    deloitte: { s: "no", g: "Services-led troubleshooting." },
+    flick: { s: "no", g: "Pre-submission validation. No post-rejection auto-fix." }
+  },
+  {
+    pkg: "Global Presence",
+    sub: "Live mandates across EU, SEA, Asia, ME",
+    lens: ["F","M"],
+    clear: { s: "yes", g: "Live in Belgium, Poland, Croatia, Germany, Malaysia, India, KSA. UAE in progress (first 5 ASPs)." },
+    cygnet: { s: "yes", g: "14+ countries. India + UAE + KSA + Malaysia + Belgium + Singapore. Growing." },
+    taxilla: { s: "maybe", g: "Claims 12+ countries. Separate product pages per country; depth per market varies." },
+    suntec: { s: "maybe", g: "UAE + KSA mentioned. EU / SEA eInvoicing not in public portfolio." },
+    deloitte: { s: "maybe", g: "InTax: UAE + KSA. Global via Pagero = separate stack, not own presence." },
+    flick: { s: "maybe", g: "14 countries in docs. UAE-focused in practice. Live EU/SEA volume not evidenced." }
+  },
+  {
+    pkg: "Unified API",
+    sub: "One integration \u2192 any country",
+    lens: ["M","R"],
+    clear: { s: "yes", g: "Single API + single doc. Country = parameter, not separate integration." },
+    cygnet: { s: "maybe", g: "API-first claim. No public dev portal to verify single-API model." },
+    taxilla: { s: "no", g: "Country-specific product pages (India, UAE, KSA, etc. listed separately)." },
+    suntec: { s: "maybe", g: "Country-agnostic claim. No public API docs to verify." },
+    deloitte: { s: "no", g: "Two stacks: InTax (ME) + Pagero (global)." },
+    flick: { s: "no", g: "Dev docs organised by country (14 listed separately)." }
+  },
+  {
+    pkg: "GLStream",
+    sub: "ERP connector + Recon + VAT assurance",
+    lens: ["M","R"],
+    clear: { s: "yes", g: "All major ERPs. ~2 wk integration. Recon + VAT out of the box." },
+    cygnet: { s: "maybe", g: "Connectors + recon exist as separate products." },
+    taxilla: { s: "maybe", g: "GL extraction + VAT exist as separate product lines." },
+    suntec: { s: "yes", g: "Xelerate: ERP adapters + VAT module. Comparable." },
+    deloitte: { s: "maybe", g: "Services-led. No pre-built connector documented." },
+    flick: { s: "yes", g: "Broadest ERP list. Tax Recon ships with product." }
+  },
+  {
+    pkg: "AP Connector",
+    sub: "Rule-based routing \u2192 Ariba / Coupa / inbox",
+    lens: ["R"],
+    clear: { s: "yes", g: "Routing engine: AP inbox + Ariba + Coupa. Rule-based by supplier/entity/PO/amount." },
+    cygnet: { s: "maybe", g: "IMS for inbound. No native Ariba/Coupa connectors." },
+    taxilla: { s: "maybe", g: "Own AP routing. No native Ariba/Coupa connectors." },
+    suntec: { s: "maybe", g: "No documented AP routing to Ariba/Coupa." },
+    deloitte: { s: "maybe", g: "Implements Ariba/Coupa as services, not product-level connector." },
+    flick: { s: "maybe", g: "Receiver ASP. No native Ariba/Coupa connectors." }
+  }
+];
+
+const COMPS = ["cygnet","taxilla","suntec","deloitte","flick"];
+
+function pillHtml(state) {
+  const map = {
+    yes:   { bg:"#ecfdf5", c:"#047857", bc:"#a7f3d0", l:"Yes" },
+    maybe: { bg:"#fffbeb", c:"#b45309", bc:"#fde68a", l:"Maybe" },
+    no:    { bg:"#f5f5f4", c:"#57534e", bc:"#e7e5e0", l:"No" }
+  };
+  const s = map[state] || map.no;
+  return '<span style="display:inline-flex;align-items:center;padding:2px 9px;border-radius:999px;font-size:11px;font-weight:700;background:'+s.bg+';color:'+s.c+';border:1px solid '+s.bc+'">'+s.l+'</span>';
+}
+
+function lensHtml(tags) {
+  const map = {F:{bg:"#fef2f2",c:"#991b1b",bc:"#fecaca"},M:{bg:"#fffbeb",c:"#92400e",bc:"#fde68a"},R:{bg:"#ecfdf5",c:"#166534",bc:"#a7f3d0"}};
+  return tags.map(t=>{const s=map[t];return '<span style="display:inline-flex;padding:1px 7px;border-radius:999px;font-size:10px;font-weight:700;background:'+s.bg+';color:'+s.c+';border:1px solid '+s.bc+'">'+t+'</span>'}).join(" ");
+}
+
+function renderMatrix(){
+  const body = document.getElementById("matrixBody");
+  body.innerHTML = MATRIX_ROWS.map(row => {
+    const tdStyle = 'padding:12px 12px;font-size:12.5px;border-bottom:1px solid #f1efe9;vertical-align:top;';
+    const clearTd = 'padding:12px 12px;font-size:12.5px;border-bottom:1px solid #f1efe9;vertical-align:top;background:#fbfdff;border-left:1px solid #dbeafe;border-right:1px solid #dbeafe;';
+    let html = '<tr>';
+    html += '<td style="'+tdStyle+'text-align:left;min-width:240px"><div style="font-weight:700;color:#0f172a;font-size:13.5px">'+row.pkg+' '+lensHtml(row.lens)+'</div><div style="font-size:11.5px;color:#64748b;margin-top:3px">'+row.sub+'</div></td>';
+    html += '<td style="'+clearTd+'text-align:center">'+pillHtml(row.clear.s)+'<div style="font-size:11px;color:#334155;margin-top:5px;text-align:left">'+row.clear.g+'</div></td>';
+    COMPS.forEach(c => {
+      const cell = row[c];
+      html += '<td style="'+tdStyle+'text-align:center">'+pillHtml(cell.s)+'<div style="font-size:11px;color:#64748b;margin-top:5px;text-align:left">'+cell.g+'</div></td>';
+    });
+    html += '</tr>';
+    return html;
+  }).join("");
+
+  // Scorecard summary row
+  const totals = { clear: 0 };
+  COMPS.forEach(c => totals[c] = 0);
+  MATRIX_ROWS.forEach(row => {
+    if (row.clear.s === "yes") totals.clear++;
+    COMPS.forEach(c => { if (row[c].s === "yes") totals[c]++; });
+  });
+  const total = MATRIX_ROWS.length;
+  const scoreTd = 'padding:14px 12px;font-size:13px;border-top:2px solid #e7e5e0;font-weight:700;text-align:center;vertical-align:middle;';
+  const scoreClearTd = scoreTd + 'background:#eff6ff;border-left:1px solid #dbeafe;border-right:1px solid #dbeafe;color:#1d4ed8;';
+  let scoreRow = '<tr>';
+  scoreRow += '<td style="'+scoreTd+'text-align:left;color:#0f172a;font-size:12px;text-transform:uppercase;letter-spacing:.04em">Scorecard</td>';
+  scoreRow += '<td style="'+scoreClearTd+'"><span style="font-family:Syne,system-ui;font-size:20px">'+totals.clear+' / '+total+'</span></td>';
+  COMPS.forEach(c => {
+    const color = totals[c] === 0 ? '#94a3b8' : '#0f172a';
+    scoreRow += '<td style="'+scoreTd+'color:'+color+'"><span style="font-family:Syne,system-ui;font-size:20px">'+totals[c]+' / '+total+'</span></td>';
+  });
+  scoreRow += '</tr>';
+  body.innerHTML += scoreRow;
+}
+
+renderMatrix();
+
+// ===== Make gap-tables and talk-tracks collapsible =====
+function wrapCollapsible(card, selector, label) {
+  const els = card.querySelectorAll(selector);
+  if (!els.length) return;
+  const wrapper = document.createElement('div');
+  wrapper.className = 'collapsible-wrapper';
+  const toggle = document.createElement('button');
+  toggle.className = 'collapsible-toggle';
+  toggle.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 4 10 8 6 12"/></svg>' + label;
+  const content = document.createElement('div');
+  content.className = 'collapsible-content';
+  els.forEach(el => content.appendChild(el));
+  toggle.addEventListener('click', function() {
+    const isOpen = content.classList.toggle('open');
+    toggle.classList.toggle('open', isOpen);
+    if (isOpen) {
+      content.style.maxHeight = content.scrollHeight + 'px';
+    } else {
+      content.style.maxHeight = '0';
+    }
+  });
+  wrapper.appendChild(toggle);
+  wrapper.appendChild(content);
+  return wrapper;
+}
+
+document.querySelectorAll('.card').forEach(card => {
+  // Wrap gap-table + secondary-strip into "Show competitor gaps"
+  const gapTable = card.querySelector('.gap-table');
+  const secondaryStrip = card.querySelector('.secondary-strip');
+  if (gapTable) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'collapsible-wrapper';
+    const toggle = document.createElement('button');
+    toggle.className = 'collapsible-toggle';
+    toggle.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 4 10 8 6 12"/></svg>Show competitor gaps';
+    const content = document.createElement('div');
+    content.className = 'collapsible-content';
+    gapTable.parentNode.insertBefore(wrapper, gapTable);
+    content.appendChild(gapTable);
+    if (secondaryStrip) content.appendChild(secondaryStrip);
+    toggle.addEventListener('click', function() {
+      const isOpen = content.classList.toggle('open');
+      toggle.classList.toggle('open', isOpen);
+      content.style.maxHeight = isOpen ? content.scrollHeight + 'px' : '0';
+    });
+    wrapper.appendChild(toggle);
+    wrapper.appendChild(content);
+  }
+
+  // Wrap talk-track into "Show talk-track"
+  const talkTrack = card.querySelector('.talk-track');
+  if (talkTrack) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'collapsible-wrapper';
+    const toggle = document.createElement('button');
+    toggle.className = 'collapsible-toggle';
+    toggle.innerHTML = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 4 10 8 6 12"/></svg>Show talk-track';
+    const content = document.createElement('div');
+    content.className = 'collapsible-content';
+    talkTrack.parentNode.insertBefore(wrapper, talkTrack);
+    content.appendChild(talkTrack);
+    toggle.addEventListener('click', function() {
+      const isOpen = content.classList.toggle('open');
+      toggle.classList.toggle('open', isOpen);
+      content.style.maxHeight = isOpen ? content.scrollHeight + 'px' : '0';
+    });
+    wrapper.appendChild(toggle);
+    wrapper.appendChild(content);
+  }
+});
+
+// ===== Card counters per section =====
+["fear","mandate","roi"].forEach(secId => {
+  const sec = document.getElementById(secId);
+  if (!sec) return;
+  const cards = sec.querySelectorAll('.card');
+  const total = cards.length;
+  const hero = sec.querySelector('.section-hero');
+  if (hero && total > 0) {
+    const counter = document.createElement('div');
+    counter.className = 'card-counter mt-3';
+    counter.innerHTML = '<span class="current">' + total + '</span> battle cards in this section';
+    hero.appendChild(counter);
+  }
+  cards.forEach((card, i) => {
+    const bar = card.querySelector('.accent-bar');
+    if (bar) {
+      const badge = document.createElement('div');
+      badge.className = 'card-counter mb-2';
+      badge.innerHTML = '<span class="current">' + (i + 1) + '</span> / ' + total;
+      bar.parentNode.insertBefore(badge, bar.nextSibling);
+    }
+  });
+});
+
+// ===== Tab routing =====
+function activate(tab){
+  if(!TABS.includes(tab)) tab="fear";
+  TABS.forEach(t=>{
+    const sec=document.getElementById(t);
+    const btn=document.querySelector(`.tab-btn[data-tab="${t}"]`);
+    if(sec) sec.classList.toggle("active",t===tab);
+    if(btn) btn.classList.toggle("active",t===tab);
+  });
+  if(location.hash.replace("#","")!==tab) history.replaceState(null,"","#"+tab);
+  window.scrollTo({top:0,behavior:"instant"});
+}
+document.querySelectorAll(".tab-btn").forEach(b=>{
+  b.addEventListener("click",()=>activate(b.dataset.tab));
+});
+window.addEventListener("hashchange",()=>activate(location.hash.replace("#","")));
+activate((location.hash||"#fear").replace("#",""));
+</script>
+</body>
+</html>
