@@ -75,10 +75,41 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
 /* Card counter */
 .card-counter{font-size:12px;font-weight:600;color:#94a3b8;letter-spacing:.02em;display:inline-flex;align-items:center;gap:4px}
 .card-counter .current{color:#2563eb;font-weight:700}
+/* Login gate */
+.login-overlay{position:fixed;inset:0;z-index:9999;background:#fafaf7;display:flex;align-items:center;justify-content:center}
+.login-box{background:#fff;border:1px solid #e7e5e0;border-radius:16px;padding:36px 32px;width:100%;max-width:380px;box-shadow:0 8px 32px -12px rgba(15,23,42,.12)}
+.login-box h2{font-family:'Syne',system-ui,sans-serif;font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:4px}
+.login-box p{font-size:13px;color:#64748b;margin-bottom:20px}
+.login-box label{display:block;font-size:12px;font-weight:600;color:#475569;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.login-box input{display:block;width:100%;padding:10px 12px;border:1px solid #e7e5e0;border-radius:8px;font-size:14px;font-family:'DM Sans',system-ui,sans-serif;margin-bottom:14px;transition:border-color .18s}
+.login-box input:focus{outline:none;border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.login-box button{width:100%;padding:11px;background:#0f172a;color:#fafaf7;border:none;border-radius:10px;font-size:14px;font-weight:600;font-family:'DM Sans',system-ui,sans-serif;cursor:pointer;transition:background .18s}
+.login-box button:hover{background:#1e293b}
+.login-error{color:#dc2626;font-size:12px;font-weight:600;margin-top:-8px;margin-bottom:10px;display:none}
+.app-content{display:none}
+.app-content.unlocked{display:block}
 </style>
 </head>
 <body class="antialiased">
 
+<!-- Login gate -->
+<div class="login-overlay" id="loginOverlay">
+  <div class="login-box">
+    <div class="w-10 h-10 rounded-xl bg-ink text-bg grid place-items-center font-heading font-bold text-lg mb-4">C</div>
+    <h2>Clear · UAE eInvoicing</h2>
+    <p>Enter credentials to access the ASP Differentiation Brief.</p>
+    <form id="loginForm" autocomplete="off">
+      <label for="loginUser">Username</label>
+      <input type="text" id="loginUser" placeholder="Username" autofocus />
+      <label for="loginPass">Password</label>
+      <input type="password" id="loginPass" placeholder="Password" />
+      <div class="login-error" id="loginError">Incorrect username or password.</div>
+      <button type="submit">Sign in</button>
+    </form>
+  </div>
+</div>
+
+<div class="app-content" id="appContent">
 <nav class="nav-frost sticky top-0 z-40">
   <div class="max-w-5xl mx-auto px-4 md:px-6 py-3 flex items-center gap-4">
     <a href="#" class="flex items-center gap-2 shrink-0">
@@ -845,6 +876,57 @@ document.querySelectorAll(".tab-btn").forEach(b=>{
 });
 window.addEventListener("hashchange",()=>activate(location.hash.replace("#","")));
 activate((location.hash||"#fear").replace("#",""));
+</script>
+
+</div><!-- /app-content -->
+
+<!-- Confidential watermark -->
+<div id="confidentialStamp" style="display:none;position:fixed;bottom:16px;right:16px;z-index:50;background:rgba(220,38,38,.08);border:1px solid rgba(220,38,38,.2);border-radius:10px;padding:6px 14px;pointer-events:none">
+  <div style="font-family:Syne,system-ui,sans-serif;font-size:11px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:.1em">Confidential — Internal Use Only</div>
+</div>
+
+<!-- Auth script -->
+<script>
+(function(){
+  // SHA-256 hash of credentials for basic obfuscation
+  async function sha256(str){
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  }
+  const HASH_USER = 'ab8d5882a847610265f7a58d8a0adefdc32827f1f5d94130df1b162c36898da2';
+  const HASH_PASS = '58d90efb241051edf64ec8aded691509c9b111703e400e4d05bc5a1cb2195acf';
+
+  const overlay = document.getElementById('loginOverlay');
+  const appContent = document.getElementById('appContent');
+  const stamp = document.getElementById('confidentialStamp');
+  const form = document.getElementById('loginForm');
+  const errorEl = document.getElementById('loginError');
+
+  function unlock(){
+    overlay.style.display='none';
+    appContent.classList.add('unlocked');
+    stamp.style.display='block';
+  }
+
+  // Check session
+  if(sessionStorage.getItem('uae_auth')==='1') unlock();
+
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    const u = document.getElementById('loginUser').value.trim();
+    const p = document.getElementById('loginPass').value;
+    const hu = await sha256(u);
+    const hp = await sha256(p);
+    if(hu===HASH_USER && hp===HASH_PASS){
+      sessionStorage.setItem('uae_auth','1');
+      unlock();
+    } else {
+      errorEl.style.display='block';
+      document.getElementById('loginPass').value='';
+      document.getElementById('loginPass').focus();
+    }
+  });
+})();
 </script>
 </body>
 </html>
