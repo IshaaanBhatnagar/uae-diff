@@ -893,7 +893,7 @@ activate((location.hash||"#fear").replace("#",""));
     const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
     return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
   }
-  const HASH_USER = 'ab8d5882a847610265f7a58d8a0adefdc32827f1f5d94130df1b162c36898da2';
+  const HASH_USER = 'a66037cfbecfaf3a59e2d92515ebf666418ed450d692deff1999b5f8993bae6e';
   const HASH_PASS = '58d90efb241051edf64ec8aded691509c9b111703e400e4d05bc5a1cb2195acf';
 
   const overlay = document.getElementById('loginOverlay');
