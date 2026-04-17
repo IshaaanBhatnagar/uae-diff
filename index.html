@@ -131,7 +131,6 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
       <button data-tab="mandate" class="tab-btn tab-mandate">Mandate</button>
       <button data-tab="roi" class="tab-btn tab-roi">ROI</button>
       <button data-tab="matrix" class="tab-btn tab-matrix">Matrix</button>
-      <button data-tab="lose" class="tab-btn tab-lose">When We Lose <span style="font-size:9px;padding:1px 5px;border-radius:999px;background:rgba(255,255,255,.25);margin-left:4px;vertical-align:middle">WIP</span></button>
     </div>
   </div>
 </nav>
@@ -680,66 +679,7 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
   </div>
 </section>
 
-<!-- ==================== WHEN WE LOSE ==================== -->
-<section id="lose" class="sec">
-  <div class="section-hero" style="background:linear-gradient(135deg,#faf5ff,#f3e8ff);border:1px solid #e9d5ff;border-radius:16px;padding:28px 28px 24px;margin-bottom:28px">
-    <span class="hash-chip">#when-we-lose</span>
-    <h1 class="font-heading text-3xl md:text-4xl font-bold mt-3" style="color:#581c87">When we lose — and when to walk away <span style="font-size:13px;padding:3px 10px;border-radius:999px;background:#e9d5ff;color:#6b21a8;vertical-align:middle;font-family:'DM Sans',system-ui,sans-serif;letter-spacing:.04em">WIP</span></h1>
-    <p style="color:#6b21a8" class="mt-2 max-w-2xl text-[15px]">Great sellers know when NOT to fight. These four scenarios drain pipeline energy from winnable deals. Qualify early, cut losses fast, stay warm for the re-engage.</p>
-  </div>
-
-  <!-- SAP Inertia -->
-  <div class="card p-6 md:p-7 mb-6" style="border-left:3px solid #6b21a8">
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-      <span class="pill" style="background:#faf5ff;color:#6b21a8;border:1px solid #e9d5ff;font-size:12px">Walk or qualify hard</span>
-      <span class="font-heading font-bold text-[17px]">SAP inertia</span>
-    </div>
-    <div class="text-[14px] text-slate-700">
-      <p><strong>Signal:</strong> Customer is S/4HANA wall-to-wall. SAP DRC is already bundled in their BTP licence. IT reports to an SAP Centre of Excellence. The CIO sees eInvoicing as "just another DRC content package."</p>
-      <p class="mt-2"><strong>Why we lose:</strong> Integration inertia. DRC is pre-approved in their SAP roadmap and the incremental cost is near-zero because BTP is already paid for. Ripping that out means justifying a new vendor to SAP-aligned IT leadership.</p>
-      <p class="mt-2"><strong>What to do:</strong> Qualify in the first call — "Are you running S/4HANA with BTP, and is DRC already in scope?" If yes and they're single-ERP, deprioritise. Compete only if they're multi-ERP (S/4 + Oracle + Dynamics) — that's where SAP DRC falls apart and GLStream wins.</p>
-    </div>
-  </div>
-
-  <!-- Price-driven local buyer -->
-  <div class="card p-6 md:p-7 mb-6" style="border-left:3px solid #6b21a8">
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-      <span class="pill" style="background:#faf5ff;color:#6b21a8;border:1px solid #e9d5ff;font-size:12px">Let them go</span>
-      <span class="font-heading font-bold text-[17px]">Price-driven local buyer</span>
-    </div>
-    <div class="text-[14px] text-slate-700">
-      <p><strong>Signal:</strong> Choosing the cheapest ASP on the FTA list. No GCC expansion plan. Small invoice volume (<10K/month). Procurement is running a reverse auction.</p>
-      <p class="mt-2"><strong>Why we lose:</strong> Our value story — Unified API, GLStream, DC/DR, Scale — is overkill for a single-entity UAE SME doing 5K invoices/month. We can't compete on price alone against a lean local ASP.</p>
-      <p class="mt-2"><strong>What to do:</strong> Let them go. Stay warm. They'll be back after the first FTA schema change breaks their vendor's integration, or when they expand to KSA and discover their ASP can't follow. Set a 6-month re-engage reminder.</p>
-    </div>
-  </div>
-
-  <!-- Deloitte relationship lock -->
-  <div class="card p-6 md:p-7 mb-6" style="border-left:3px solid #6b21a8">
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-      <span class="pill" style="background:#faf5ff;color:#6b21a8;border:1px solid #e9d5ff;font-size:12px">Partner or walk</span>
-      <span class="font-heading font-bold text-[17px]">Deloitte relationship lock</span>
-    </div>
-    <div class="text-[14px] text-slate-700">
-      <p><strong>Signal:</strong> Deloitte is the existing tax advisory + audit partner. The CFO trusts the Deloitte partner personally. InTax is being positioned as "part of our ongoing relationship."</p>
-      <p class="mt-2"><strong>Why we lose:</strong> Relationship lock. The CFO isn't buying a platform — they're buying continuity with a trusted advisor. Technical superiority doesn't overcome personal trust built over years of audit cycles.</p>
-      <p class="mt-2"><strong>What to do:</strong> Two paths. <strong>Partner:</strong> offer Clear as the platform under Deloitte's advisory wrapper — "Deloitte advises, Clear runs." Deloitte's InTax uses Pagero globally anyway; they're not allergic to third-party platforms. <strong>Walk:</strong> if Deloitte won't engage, deprioritise. The re-engage trigger is when the customer discovers InTax's UAE stack and global stack are two different products.</p>
-    </div>
-  </div>
-
-  <!-- Single-country, no GCC -->
-  <div class="card p-6 md:p-7 mb-6" style="border-left:3px solid #6b21a8">
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px">
-      <span class="pill" style="background:#faf5ff;color:#6b21a8;border:1px solid #e9d5ff;font-size:12px">Reframe the pitch</span>
-      <span class="font-heading font-bold text-[17px]">Single-country, no GCC expansion</span>
-    </div>
-    <div class="text-[14px] text-slate-700">
-      <p><strong>Signal:</strong> UAE-only entity. No subsidiaries in KSA, Qatar, or Oman. No expansion plans on the 3-year horizon. The CFO says "we just need UAE compliance."</p>
-      <p class="mt-2"><strong>Why we struggle:</strong> Our strongest pitch — Unified API, multi-country, GCC rollout in one integration — doesn't land. The prospect doesn't value what they don't need.</p>
-      <p class="mt-2"><strong>What to do:</strong> Don't walk — reframe. Drop the geography pitch entirely. Lead with <strong>GLStream</strong> (2-week integration, eliminates middleware, recon + VAT built in), <strong>DC/DR</strong> (3-tier, published RTO/RPO), and <strong>Scale</strong> (1B invoices/year). These are single-country differentiators that still beat local ASPs on depth. Win on integration speed and operational resilience, not geography.</p>
-    </div>
-  </div>
-</section>
+<!-- When We Lose tab removed — content preserved in git history (commit d59b054) -->
 
 </main>
 
@@ -751,7 +691,7 @@ h1,h2,h3,h4,.font-heading{font-family:'Syne',system-ui,sans-serif;letter-spacing
 </footer>
 
 <script>
-const TABS = ["overview","fear","mandate","roi","matrix","lose"];
+const TABS = ["overview","fear","mandate","roi","matrix"];
 
 // ===== Matrix data =====
 const MATRIX_ROWS = [
